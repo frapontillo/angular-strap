@@ -28,14 +28,15 @@ angular.module('$strap.directives')
         };
 
         // Watch for changes to the model value
-        scope.$watch(attrs.ngModel, function(newValue, oldValue) {
-          refresh(newValue, oldValue);
-        });
+        scope.$watch(attrs.ngModel, refresh);
 
         // Watch for changes to the options
-        scope.$watch(attrs.bsSelect, function(newValue, oldValue) {
-          refresh(newValue, oldValue);
-        });
+        scope.$watch(attrs.bsSelect, refresh);
+
+        // Watch for changes to the title
+        scope.$watch(function() {
+          return attrs.title;
+        }, refresh);
 
       }
 
